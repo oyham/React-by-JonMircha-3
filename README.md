@@ -19,3 +19,16 @@ const restar = useCallback(() => setContador(contador-1),[contador])
 Ahora al cambiar el valor del input, ya no se vuelve a renderizar el componente hijo, ya que las funciones estan memorizadas por su lado.
 
 ---
+# 74. Memorización (useMemo)
+Sirve para memorizar valores que debamos de calcular en tiempo de ejecución en tiempo de nuestra aplicación. Para hacer procesos muy pesados, cómo esperar la petición de una API. La diferencia con useCallback, useMemo memoriza el resultado de una función... un valor calculado. Devolverá un error si no retornamos el valor que pretendemos memorizar. Para memorizar una función utilizariamos useCallback, y en este caso, el valor se maneja con useMemo dado cierto proceso. el useMemo en sí debe de retornar el valor calculado, en este caso 'numero'.
+```js
+ const superNumero = useMemo(() => {
+        let numero = 0;
+
+    for (let i = 0; i < 1000000000; i++){
+        numero++;
+    } 
+
+    return numero;
+    }, [])
+```
